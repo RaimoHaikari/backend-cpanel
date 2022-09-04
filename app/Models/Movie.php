@@ -18,6 +18,11 @@ class Movie extends Model
         'googleID', 'nimi', 'wiki', 'imdb', 'kavi', 'img', 'paiva','kuukausi'.'vuosi'
     ];
 
+    public function genres(): HasMany
+    {
+        return $this->hasMany(Genre::class,'googleID', 'googleID');
+    }
+
     public function reviews(): HasMany
     {
         return $this->hasMany(Review::class,'googleID', 'googleID');
