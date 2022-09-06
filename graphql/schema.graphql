@@ -18,7 +18,12 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
+
+    distinctGenres: [DistinctGenre]! @all
+
     movies: [Movie!]! @all
+
+    hello: String!
 }
 
 "Account of a person who utilizes this application."
@@ -48,7 +53,15 @@ type Movie {
   id: ID!
   googleID: Int!
   nimi: String!
+  wiki: String
+  imdb: String
+  kavi: String
+  paiva: Int!
+  kuukausi: Int!
+  vuosi: Int!
   reviews: [Review]! @hasMany
+  genres: [Genre]! @hasMany
+  numbOfReviews: Int! @field(resolver: "App\\Graphql\\Queries\\Movies@numbOfReviews")
 
 }
 
@@ -61,5 +74,15 @@ type Review {
   stars: Float!
   movie: Movie! @belongsTo
 
+}
+
+type Genre {
+  genre: String!
+  movie: Movie! @belongsTo
+}
+
+type DistinctGenre {
+  genre: String!
+  numberOfMovies: Int!
 }
 

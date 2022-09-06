@@ -8,6 +8,6 @@
   </head>
   <body>
     <h1>Havuja perkele</h1>
-    <p>Päivitys: 04.09.2022 klo 16:31</p>
+    <p>Päivitys: 06.09.2022 klo 14:38</p>
   </body>
 </html>

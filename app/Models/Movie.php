@@ -15,7 +15,7 @@ class Movie extends Model
      *
      */
     protected $fillable = [
-        'googleID', 'nimi', 'wiki', 'imdb', 'kavi', 'img', 'paiva','kuukausi'.'vuosi'
+        'googleID', 'nimi', 'wiki', 'imdb', 'kavi', 'img', 'paiva','kuukausi','vuosi'
     ];
 
     public function genres(): HasMany
@@ -27,5 +27,5 @@ class Movie extends Model
     {
         return $this->hasMany(Review::class,'googleID', 'googleID');
     }
-    
+
 }
