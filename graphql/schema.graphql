@@ -41,8 +41,8 @@ type Critic {
 type DistinctGenre {
   genre: String!
   numberOfMovies: Int!
-  numberOfReviews: Int! @field(resolver: "App\\Graphql\\Queries\\Genres@numberOfReviews")
-  starsAverage: Float! @field(resolver: "App\\Graphql\\Queries\\Genres@starsAverage")
+  numberOfReviews: Int! @field(resolver: "App\\GraphQL\\Queries\\Genres@numberOfReviews")
+  starsAverage: Float! @field(resolver: "App\\GraphQL\\Queries\\Genres@starsAverage")
 }
 
 type Genre {
@@ -64,9 +64,10 @@ type Movie {
   vuosi: Int!
   reviews: [Review]! @hasMany
   genres: [Genre]! @hasMany
-  numbOfReviews: Int! @field(resolver: "App\\Graphql\\Queries\\Movies@numbOfReviews")
+  numbOfReviews: Int! @field(resolver: "App\\GraphQL\\Queries\\Movies@numbOfReviews")
 
 }
+
 
 "- Yksittäisen arvostelun tiedot"
 type Review {

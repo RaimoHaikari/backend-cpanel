@@ -28,7 +28,7 @@ Route::get('/foo', function(){
     //$reviews = Movie::where('googleID', 1)->get()->first()->reviews->count();
     //dd($reviews);
 
-    $data = Critic::all();
+    $data = DistinctGenre::all();
     return $data;
  
 
