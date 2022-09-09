@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Movie;
-use App\Models\Genre;
+use App\Models\Critic;
 use App\Models\DistinctGenre;
 
 /*
@@ -29,8 +28,8 @@ Route::get('/foo', function(){
     //$reviews = Movie::where('googleID', 1)->get()->first()->reviews->count();
     //dd($reviews);
 
-    $distinctGenres = DistinctGenre::all();
-
-    dd($distinctGenres);
+    $data = Critic::all();
+    return $data;
+ 
 
 });

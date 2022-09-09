@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/*
+        genre: String!
+        movies: [Movie]!
+        numberOfMovies: Int!,
+        numberOfReviews: Int!
+        numberOfReviewsCounted: Int!
+        starsAverage: Float!
+        starsAverageCounted: Float!
+*/
 class Genre extends Model
 {
     use HasFactory;
