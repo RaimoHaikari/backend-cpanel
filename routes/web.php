@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Critic;
 use App\Models\DistinctGenre;
-
+use App\Models\Movie;
+use Illuminate\Support\Carbon;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,15 +22,15 @@ Route::get('/', function () {
 
 Route::get('/foo', function(){
 
-    //$movie = Movie::where('googleID', 1)->reviews;
+    $movie = Movie::where('googleID', 1)->get();
     //$reviews = Movie::find(1)->reviews;
 
     //$movie = Movie::find(1);
     //$reviews = Movie::where('googleID', 1)->get()->first()->reviews->count();
     //dd($reviews);
 
-    $data = DistinctGenre::all();
-    return $data;
- 
+    //$mytime = Carbon::now();
+    //return $mytime->toDateTimeString();
+    return $movie;
 
 });

@@ -22,6 +22,7 @@ type Query {
 
     distinctGenres: [DistinctGenre]! @all
 
+    movie(googleID: Int! @eq): Movie @find
     movies: [Movie!]! @all
 
     reviews: [Review]! @all
@@ -30,11 +31,29 @@ type Query {
     hello: String!
 }
 
+type Actor {
+  googleID: Int!
+  nimi: String!
+  kaviID: String!
+}
+
 type Critic {
   criticID: String!
   nimi: String!
   numbOfReviews: Int!
   starsAverage: Float!
+}
+
+type Director {
+  googleID: Int!
+  nimi: String!
+  kaviID: String!
+}
+
+type Distributor {
+  googleID: Int!
+  nimi: String!
+  kaviID: String!
 }
 
 
@@ -58,12 +77,18 @@ type Movie {
   wiki: String
   imdb: String
   kavi: String
+  img: String!
   paiva: Int!
   kuukausi: Int!
   vuosi: Int!
   reviews: [Review]! @hasMany
   genres: [Genre]! @hasMany
+  actors: [Actor]! @hasMany
+  director: [Director]! @hasMany
+  distributor: [Distributor]! @hasMany
   numbOfReviews: Int! @field(resolver: "App\\GraphQL\\Queries\\Movies@numbOfReviews")
+  ensiIlta: DateTime!
+  writer: [Writer]! @hasMany
 }
 
 
@@ -73,9 +98,11 @@ type Review {
   id: ID!
   googleID: Int!
   criticID: String!
+  name: String!
   stars: Float!
   movie: Movie! @belongsTo
-
+  link: String!
+  publisher: String!
 }
 
 
@@ -98,6 +125,12 @@ type User {
 
     "When the account was last updated."
     updated_at: DateTime!
+}
+
+type Writer {
+  googleID: Int!
+  nimi: String!
+  kaviID: String!
 }
 
 
