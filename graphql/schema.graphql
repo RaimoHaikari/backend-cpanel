@@ -18,7 +18,11 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
+    collequeReviews(criticID: String!, collequeID: String!): [CollequeReview!]!
+
+
     critics: [Critic]! @all
+    critic(criticID: String! @eq): Critic @find
 
     distinctGenres: [DistinctGenre]! @all
 
@@ -26,7 +30,7 @@ type Query {
     movies: [Movie!]! @all
 
     reviews: [Review]! @all
-
+    allReviews(criticID: String! @eq): [Review]! @all
 
     hello: String!
 }
@@ -37,10 +41,25 @@ type Actor {
   kaviID: String!
 }
 
+"defCompSet: [DefaultCompSet]!"
 type Critic {
   criticID: String!
   nimi: String!
   numbOfReviews: Int!
+  starsAverage: Float!
+  defCompSet: [DefaultCompSet]!
+  reviewerWithSharedItems: [ReviewerWithSharedItems]!
+}
+
+type CollequeReview {
+  criticID: String!
+  googleID: Int!
+  stars: Int!
+}
+
+type DefaultCompSet {
+  googleID: Int!
+  count: Int!
   starsAverage: Float!
 }
 
@@ -103,6 +122,13 @@ type Review {
   movie: Movie! @belongsTo
   link: String!
   publisher: String!
+}
+
+""
+type ReviewerWithSharedItems {
+    criticID: String!
+    count: Int!
+    name: String!
 }
 
 

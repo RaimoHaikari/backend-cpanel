@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Critic;
-use App\Models\DistinctGenre;
-use App\Models\Movie;
-use Illuminate\Support\Carbon;
+use App\Models\Review;
+use App\Models\CollequeReview;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +22,8 @@ Route::get('/', function () {
 
 Route::get('/foo', function(){
 
-    $movie = Movie::where('googleID', 1)->get();
-    //$reviews = Movie::find(1)->reviews;
+    $critic = Critic::where('criticID', 'nikoIkonen')->get();
+    //$cReviews = CollequeReview::all();
 
     //$movie = Movie::find(1);
     //$reviews = Movie::where('googleID', 1)->get()->first()->reviews->count();
@@ -31,6 +31,6 @@ Route::get('/foo', function(){
 
     //$mytime = Carbon::now();
     //return $mytime->toDateTimeString();
-    return $movie;
+    return $critic;
 
 });
