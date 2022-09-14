@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Critic;
 use App\Models\Review;
 use App\Models\CollequeReview;
+use App\Models\StarsOfTheGenre;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/', function () {
 Route::get('/foo', function(){
 
     $critic = Critic::where('criticID', 'nikoIkonen')->get();
+    $starsOfTheGenre = StarsOfTheGenre::all();
+    dd($starsOfTheGenre);
     //$cReviews = CollequeReview::all();
 
     //$movie = Movie::find(1);

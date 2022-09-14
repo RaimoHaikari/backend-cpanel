@@ -18,6 +18,9 @@ type Query {
       name: String @where(operator: "like")
     ): [User!]! @paginate(defaultCount: 10)
 
+    
+    allReviews(criticID: String! @eq): [Review]! @all
+
     collequeReviews(criticID: String!, collequeID: String!): [CollequeReview!]!
 
 
@@ -30,7 +33,9 @@ type Query {
     movies: [Movie!]! @all
 
     reviews: [Review]! @all
-    allReviews(criticID: String! @eq): [Review]! @all
+
+    starsBasedOnGenre(genre: String!): [StarsOfTheGenre]!
+    
 
     hello: String!
 }
@@ -129,6 +134,12 @@ type ReviewerWithSharedItems {
     criticID: String!
     count: Int!
     name: String!
+}
+
+type StarsOfTheGenre {
+    name: String
+    stars: [Int!]!
+    total: Int!
 }
 
 
