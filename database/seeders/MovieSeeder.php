@@ -17,14 +17,15 @@ class MovieSeeder extends Seeder
         // Tyhjennetään taulu
         Movie::truncate();
 
-        $csvFile = fopen(base_path("database/data/movie.csv"), "r");
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/elokuvat.csv", "r");
+        //$csvFile = fopen(base_path("database/data/movie.csv"), "r");
 
         $firstline = true;
         // id,nimi,wiki,imdb,kavi,img,ensiIlta
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
             if (!$firstline) {
 
-                $ensiIlta =  explode(".", $data['6']);
+                $ensiIlta =  explode(".", $data['7']);
 
                 Movie::create([
                     "googleID" => $data['0'],

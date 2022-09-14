@@ -17,7 +17,8 @@ class ReviewSeeder extends Seeder
         // Tyhjennetään taulu
         Review::truncate();
 
-        $csvFile = fopen(base_path("database/data/reviews.csv"), "r");
+        
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/arvostelut.csv", "r");
 
         $firstline = true;
         // id,nimi,wiki,imdb,kavi,img,ensiIlta

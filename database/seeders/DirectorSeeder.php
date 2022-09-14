@@ -18,7 +18,7 @@ class DirectorSeeder extends Seeder
         // Tyhjennetään taulu
         Director::truncate();
 
-        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/ohjaajat.csv", "r");
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/ohjaajat.csv", "r");
 
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {

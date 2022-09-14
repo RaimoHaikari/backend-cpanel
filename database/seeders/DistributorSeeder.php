@@ -18,7 +18,7 @@ class DistributorSeeder extends Seeder
         // Tyhjennetään taulu
         Distributor::truncate();
 
-        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/levittaja.csv", "r");
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/levittaja.csv", "r");
 
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {

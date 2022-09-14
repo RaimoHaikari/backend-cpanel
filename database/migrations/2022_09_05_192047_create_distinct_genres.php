@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 
 class CreateDistinctGenres extends Migration
@@ -14,12 +12,8 @@ class CreateDistinctGenres extends Migration
      */
     public function up()
     {
-        DB::statement("
-            CREATE VIEW distinct_genres AS
-            SELECT genre, COUNT(genre) as numberOfMovies
-            FROM genres
-            GROUP BY genre
-        ");
+        DB::statement($this->dropView());
+        DB::statement($this->createView());
     }
 
     /**
@@ -29,6 +23,23 @@ class CreateDistinctGenres extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('distinct_genres');
+        DB::statement('DROP VIEW IF EXISTS distinct_genres');
+    }
+
+    private function createView(): string
+    {
+       return <<<SQL
+            CREATE VIEW `distinct_genres` AS
+            SELECT genre, COUNT(genre) as numberOfMovies
+            FROM genres
+            GROUP BY genre
+       SQL;
+    }
+
+    private function dropView(): string
+    {
+       return <<<SQL
+       DROP VIEW IF EXISTS `distinct_genres`;
+       SQL;
     }
 }

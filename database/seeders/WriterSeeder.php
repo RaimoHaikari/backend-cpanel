@@ -17,8 +17,7 @@ class WriterSeeder extends Seeder
 
         // Tyhjennetään taulu
         Writer::truncate();
-
-        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/kasikirjoitus.csv", "r");
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/kasikirjoitus.csv", "r");
 
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {

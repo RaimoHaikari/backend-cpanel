@@ -17,7 +17,7 @@ class GenreSeeder extends Seeder
         
         Genre::truncate();
 
-        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/genret.csv", "r");
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/genret.csv", "r");
 
         $firstline = true;
         // id,nimi,wiki,imdb,kavi,img,ensiIlta

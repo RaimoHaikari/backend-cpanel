@@ -18,7 +18,7 @@ class ActorSeeder extends Seeder
         // Tyhjennetään taulu
         Actor::truncate();
 
-        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/nayttelijat.csv", "r");
+        $csvFile = fopen("https://raw.githubusercontent.com/RaimoHaikari/tahtisadetta/main/DB/nayttelijat.csv", "r");
 
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
