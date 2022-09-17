@@ -18,29 +18,32 @@ class Genres
         /*
         throw new CustomException(
             'This is the error message',
-            $reviews
+            $rootValue->genre
         );
         */
+        
 
         return $nOfreviews;
     }
 
+    /*
+
+
+    */
+
     public function starsAverage($rootValue, array $args) {
+
 
         $avg = GenreReview::where('genre', $rootValue->genre)
             ->get()
             ->avg('stars');
 
-        /*
-        throw new CustomException(
-            'This is the error message',
-            $reviews
-        );
-        */
-    
-        
+        /* Jos genren elokuvilla ei ole vielä talletettuja arvostelua... */
+        if(is_null($avg))
+            return 0;
 
         return $avg;
+        
     }
 
 }

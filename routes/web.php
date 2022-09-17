@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Critic;
-use App\Models\Review;
-use App\Models\CollequeReview;
 use App\Models\StarsOfTheGenre;
+use App\Models\DistinctGenre;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,16 +23,11 @@ Route::get('/', function () {
 Route::get('/foo', function(){
 
     $critic = Critic::where('criticID', 'nikoIkonen')->get();
-    $starsOfTheGenre = StarsOfTheGenre::all();
-    dd($starsOfTheGenre);
-    //$cReviews = CollequeReview::all();
+    //$starsOfTheGenre = StarsOfTheGenre::all();
 
-    //$movie = Movie::find(1);
-    //$reviews = Movie::where('googleID', 1)->get()->first()->reviews->count();
-    //dd($reviews);
+    $districGenres = DistinctGenre::all();
+    dd($districGenres);
 
-    //$mytime = Carbon::now();
-    //return $mytime->toDateTimeString();
     return $critic;
 
 });
