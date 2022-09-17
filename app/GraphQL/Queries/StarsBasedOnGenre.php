@@ -55,7 +55,7 @@ final class StarsBasedOnGenre
         WHERE googleID NOT IN (
             SELECT googleID
             FROM genres 
-            WHERE genre = 'Drama'
+            WHERE genre = '$genre'
         )
         UNION
         SELECT 'Ei vertailua', 0 AS total, 0 AS nolla, 0 AS yksi, 0 AS kaksi , 0 AS kolme, 0 AS nelja , 0 AS viisi
